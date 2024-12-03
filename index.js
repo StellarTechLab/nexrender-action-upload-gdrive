@@ -1,5 +1,5 @@
 const path = require("path");
-const uploadToGoogleDrive = require("./uploadToGoogleDrive");
+const uploadToGoogleDrive = require("./uploadToGdrive");
 
 const run = async (job, settings, action, type) => {
   if (type !== "postrender") {
