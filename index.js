@@ -9,23 +9,20 @@ const run = async (job, settings, action, type) => {
   }
 
   const { logger } = settings;
-  const {
-    input,
-    params: { base64Credentials, newFileName },
-  } = action;
+
 
   // Validate required parameters
-  if (!base64Credentials) {
+  if (!action.base64Credentials) {
     throw new Error(`[nexrender-action-upload-google-drive] Missing base64Credentials.`);
   }
 
-  if (!newFileName) {
+  if (!action.fileName) {
     throw new Error(`[nexrender-action-upload-google-drive] Missing newFileName.`);
   }
 
   try {
     // Determine the file path
-    let finalInput = input ?? job.output;
+    let finalInput = job.output;
     if (!path.isAbsolute(finalInput)) {
       finalInput = path.join(job.workpath, finalInput);
     }
@@ -36,10 +33,13 @@ const run = async (job, settings, action, type) => {
 
     // Upload the file using the uploadToGoogleDrive module
     const fileId = await uploadToGoogleDrive(
-      base64Credentials,
+      action.base64Credentials,
+      action.folderUrl,
+      action.compositionName,
       finalInput,
-      newFileName,
-      logger
+      action.fileName,
+      logger,
+        action.driveID
     );
 
     logger.log(

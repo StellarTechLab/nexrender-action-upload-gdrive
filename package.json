@@ -26,6 +26,8 @@
   ],
   "dependencies": {
     "googleapis": "^144.0.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "crypto": "^1.0.1",
+    "axios": "^0.25.0"
   }
 }
