@@ -1,18 +1,18 @@
 {
-  "name": "nexrender-action-upload-s3-presigned",
-  "version": "3.1.0",
+  "name": "nexrender-action-upload-google-drive",
+  "version": "0.1.0",
   "description": "Caches and tests to see if a cached template with the same name exists, if so, sets the template.src to the cached file",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oreporan/nexrender-action-template-cache.git"
+    "url": "git+https://github.com/StellarTechLab/nexrender-action-upload-gdrive.git"
   },
   "author": "Ore Poran",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pilskalns/nexrender-action-template-cache/issues"
+    "url": "https://github.com/StellarTechLab/nexrender-action-upload-gdrive/issues"
   },
-  "homepage": "https://github.com/pilskalns/nexrender-action-template-cache#readme",
+  "homepage": "https://github.com/StellarTechLab/nexrender-action-upload-gdrive#readme",
   "keywords": [
     "after",
     "effects",
@@ -20,9 +20,13 @@
     "action",
     "template",
     "cache",
-    "archive"
+    "archive",
+    "upload",
+    "google-drive"
   ],
   "dependencies": {
-    "axios": "^0.25.0"
+    "googleapis": "^144.0.0",
+    "path": "^0.12.7",
+    "crypto": "^1.0.1"
   }
 }
