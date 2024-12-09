@@ -22,6 +22,14 @@ const run = async (job, settings, action, type) => {
     throw new Error(`[nexrender-action-upload-google-drive] Missing uploadScriptPath.`);
   }
 
+  if (!action.jobId) {
+    throw new Error(`[nexrender-action-upload-google-drive] Missing jobId.`);
+  }
+
+  if (!action.filename) {
+    throw new Error(`[nexrender-action-upload-google-drive] Missing filename.`);
+  }
+
   try {
     // Determine the file path
     let finalInput = job.output;
@@ -45,7 +53,9 @@ const run = async (job, settings, action, type) => {
     // Run the Python uploader directly
     const pythonProcess = spawn('python3', [
       uploadScriptPath,
-      finalInput
+      finalInput,
+      action.jobId,
+      action.filename
     ]);
 
     pythonProcess.stdout.on('data', (data) => {
