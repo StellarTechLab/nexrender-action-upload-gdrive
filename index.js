@@ -55,7 +55,7 @@ const run = async (job, settings, action, type) => {
     );
 
     // Run the Python uploader directly
-    const pythonProcess = spawn('python3', [
+    const pythonProcess = spawn('python', [
       uploadScriptPath,
       finalInput,
       action.jobId,
