@@ -30,6 +30,10 @@ const run = async (job, settings, action, type) => {
     throw new Error(`[nexrender-action-upload-google-drive] Missing filename.`);
   }
 
+  if (!action.folderName) {
+    throw new Error(`[nexrender-action-upload-google-drive] Missing folderName.`);
+  }
+
   try {
     // Determine the file path
     let finalInput = job.output;
@@ -55,7 +59,8 @@ const run = async (job, settings, action, type) => {
       uploadScriptPath,
       finalInput,
       action.jobId,
-      action.filename
+      action.filename,
+      action.folderName
     ]);
 
     pythonProcess.stdout.on('data', (data) => {
